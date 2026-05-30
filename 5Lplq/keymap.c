@@ -53,12 +53,12 @@ enum tap_dance_codes {
   DANCE_2,
 };
 
-#define DUAL_FUNC_0 LT(11, KC_F19)
-#define DUAL_FUNC_1 LT(4, KC_E)
-#define DUAL_FUNC_2 LT(10, KC_F21)
-#define DUAL_FUNC_3 LT(8, KC_F8)
-#define DUAL_FUNC_4 LT(15, KC_V)
-#define DUAL_FUNC_5 LT(1, KC_2)
+#define DUAL_FUNC_0 LT(15, KC_J)
+#define DUAL_FUNC_1 LT(15, KC_Z)
+#define DUAL_FUNC_2 LT(3, KC_Q)
+#define DUAL_FUNC_3 LT(12, KC_F12)
+#define DUAL_FUNC_4 LT(10, KC_A)
+#define DUAL_FUNC_5 LT(1, KC_J)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_ergodox_pretty(
@@ -82,11 +82,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                                     KC_SPACE,       KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
   ),
   [2] = LAYOUT_ergodox_pretty(
-    KC_R,           KC_E,           KC_I,           KC_S,           KC_U,           KC_B,           KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, DUAL_FUNC_1,    KC_TRANSPARENT, ST_MACRO_1,     KC_TRANSPARENT, KC_TRANSPARENT, KC_RIGHT_GUI,                                   KC_TRANSPARENT, KC_TRANSPARENT, ST_MACRO_5,     KC_TRANSPARENT, ST_MACRO_6,     KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, ST_MACRO_2,     ST_MACRO_3,     LALT(LGUI(LCTL(LSFT(KC_D)))),LALT(LGUI(LCTL(LSFT(KC_F)))),KC_TRANSPARENT,                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, LCTL(KC_PAGE_UP),LCTL(KC_PGDN),  ST_MACRO_4,     DUAL_FUNC_2,    KC_MS_BTN3,     KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_LEFT_ALT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LSFT(KC_M),                                                                                                     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_PSCR,
+    KC_TRANSPARENT, LCTL(KC_PAGE_UP),LCTL(KC_PGDN),  ST_MACRO_4,     DUAL_FUNC_2,    KC_MS_BTN3,     KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LSFT(KC_M),                                                                                                     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                                     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                                                     KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
