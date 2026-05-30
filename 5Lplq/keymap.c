@@ -692,3 +692,36 @@ const key_override_t *key_overrides[] = {
     &rbrc_ast,
 };
 
+enum combos {
+    REISUB_COMBO,
+};
+
+// `  =  -  left-meta
+const uint16_t PROGMEM reisub_combo[] = {KC_GRV, KC_EQL, KC_MINS, KC_LGUI, COMBO_END};
+
+combo_t key_combos[] = {
+    [REISUB_COMBO] = COMBO_ACTION(reisub_combo),
+};
+
+void process_combo_event(uint16_t combo_index, bool pressed) {
+    switch (combo_index) {
+        case REISUB_COMBO:
+            if (pressed) {
+                register_code(KC_LALT);   // hold Alt
+                register_code(KC_PSCR);   // hold SysRq (PrintScreen)
+                wait_ms(100);
+
+                tap_code(KC_R); wait_ms(1000);  // take keyboard out of raw mode
+                tap_code(KC_E); wait_ms(1000);  // SIGTERM to all procs
+                tap_code(KC_I); wait_ms(1000);  // SIGKILL to all procs
+                tap_code(KC_S); wait_ms(1000);  // sync disks
+                tap_code(KC_U); wait_ms(1000);  // remount read-only
+                tap_code(KC_B);                 // reboot
+
+                unregister_code(KC_PSCR);
+                unregister_code(KC_LALT);
+            }
+            break;
+    }
+}
+
