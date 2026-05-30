@@ -5,3 +5,6 @@ TAP_DANCE_ENABLE = yes
 SPACE_CADET_ENABLE = no
 COMBO_ENABLE = yes
 LTO_ENABLE = yes
+
+# Custom QMK here
+KEY_OVERRIDE_ENABLE = yes

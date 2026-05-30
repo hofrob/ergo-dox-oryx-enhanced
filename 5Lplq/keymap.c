@@ -682,3 +682,13 @@ uint8_t layer_state_set_user(uint8_t state) {
   return state;
 };
 
+// Shift + [  →  &     (your 7 key)
+const key_override_t lbrc_amp = ko_make_basic(MOD_MASK_SHIFT, KC_LBRC, KC_AMPR);
+// Shift + ]  →  *     (your 8 key)
+const key_override_t rbrc_ast = ko_make_basic(MOD_MASK_SHIFT, KC_RBRC, KC_ASTR);
+
+const key_override_t *key_overrides[] = {
+    &lbrc_amp,
+    &rbrc_ast,
+};
+
