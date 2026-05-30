@@ -6,6 +6,8 @@ RUN apt-get update && apt-get install -y \
     python3-pip \
     sudo \
     build-essential \
+    gcc-avr \
+    avr-libc \
     gcc-arm-none-eabi \
     libnewlib-arm-none-eabi \
     avrdude \
