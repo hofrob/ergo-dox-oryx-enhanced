@@ -1,6 +1,6 @@
 name: Fetch and build layout
 
-on:
+"on":
   workflow_dispatch:
     inputs:
       layout_id:
