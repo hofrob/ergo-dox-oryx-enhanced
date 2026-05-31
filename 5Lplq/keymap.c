@@ -135,6 +135,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 
+enum combos {
+    REISUB_COMBO,
+};
+
+// `  =  -  left-meta
+const uint16_t PROGMEM reisub_combo[] = {KC_GRV, KC_EQL, KC_MINS, KC_LGUI, COMBO_END};
+
 const uint16_t PROGMEM combo0[] = { MT(MOD_LCTL, KC_Z), LSFT(KC_LEFT_CTRL), COMBO_END};
 const uint16_t PROGMEM combo1[] = { LCTL(KC_LEFT_ALT), MT(MOD_LALT, KC_X), COMBO_END};
 const uint16_t PROGMEM combo2[] = { KC_2, KC_4, COMBO_END};
@@ -692,13 +699,6 @@ const key_override_t *key_overrides[] = {
     &lbrc_amp,
     &rbrc_ast,
 };
-
-enum combos {
-    REISUB_COMBO,
-};
-
-// `  =  -  left-meta
-const uint16_t PROGMEM reisub_combo[] = {KC_GRV, KC_EQL, KC_MINS, KC_LGUI, COMBO_END};
 
 void process_combo_event(uint16_t combo_index, bool pressed) {
     switch (combo_index) {
