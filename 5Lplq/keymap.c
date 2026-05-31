@@ -153,6 +153,7 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo5, KC_F5),
     COMBO(combo6, OSL(3)),
     COMBO(combo7, OSL(6)),
+    [REISUB_COMBO] = COMBO_ACTION(reisub_combo),
 };
 
 
@@ -698,10 +699,6 @@ enum combos {
 
 // `  =  -  left-meta
 const uint16_t PROGMEM reisub_combo[] = {KC_GRV, KC_EQL, KC_MINS, KC_LGUI, COMBO_END};
-
-combo_t key_combos[] = {
-    [REISUB_COMBO] = COMBO_ACTION(reisub_combo),
-};
 
 void process_combo_event(uint16_t combo_index, bool pressed) {
     switch (combo_index) {
