@@ -1,0 +1,62 @@
+default_stages: [ pre-commit ]
+fail_fast: true
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-ast
+      - id: detect-private-key
+      - id: debug-statements
+      - id: check-docstring-first
+      - id: check-executables-have-shebangs
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-shebang-scripts-are-executable
+      - id: check-symlinks
+      - id: check-toml
+      - id: check-vcs-permalinks
+      - id: check-xml
+      - id: check-yaml
+      - id: destroyed-symlinks
+      - id: end-of-file-fixer
+      - id: fix-byte-order-marker
+      - id: forbid-submodules
+      - id: mixed-line-ending
+        args: [--fix=lf]
+      - id: name-tests-test
+        args: [--pytest-test-first]
+        exclude: ^tests/utils/
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+      - id: sort-simple-yaml
+      - id: check-case-conflict
+      - id: check-builtin-literals
+
+  - repo: local
+    hooks:
+      - id: ruff-format
+        name: ruff-format
+        entry: uv run ruff format
+        types_or: [ python, pyi ]
+        language: system
+      - id: ruff
+        name: ruff
+        entry: uv run ruff check --fix --unsafe-fixes
+        types_or: [ python, pyi ]
+        language: system
+      - id: ty
+        name: ty
+        entry: uv run ty check
+        types_or: [ python, pyi ]
+        language: system
+      - id: pyproject-fmt
+        name: pyproject-fmt
+        entry: uv run pyproject-fmt
+        files: ^pyproject\.toml$
+        language: system
+      - id: mdformat
+        name: mdformat
+        entry: uv run mdformat
+        types: [ markdown ]
+        language: system
