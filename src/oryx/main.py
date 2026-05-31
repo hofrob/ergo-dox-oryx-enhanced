@@ -13,7 +13,7 @@ import requests
 import yaml
 import cyclopts
 
-REPO_ROOT = pathlib.Path(__file__).parent.parent.parent.parent
+REPO_ROOT = pathlib.Path(__file__).parent.parent.parent
 QMK_FIRMWARE = REPO_ROOT / "qmk_firmware"
 WORKFLOW_YAML = REPO_ROOT / ".github" / "workflows" / "fetch-and-build-layout.yml"
 TEMP_DIR = REPO_ROOT / "temp"
@@ -51,7 +51,7 @@ def main() -> None:
     _commit_oryx(hash_id, config_layout["id"])
     _update_qmk(qmk_version)
 
-    _build_qmk(config_layout["id"], config_layout["geometry"], qmk_version)
+    _build_qmk(config_layout["id"], config_layout["geometry"])
     subprocess.run(
         [
             "zapp",
@@ -90,22 +90,15 @@ def _layout_details() -> tuple:
 @app.command
 def build_qmk() -> None:
     config_layout = _config_layout()
-    hash_id, qmk_version, title = _layout_details()
-    _build_qmk(config_layout["id"], config_layout["geometry"], qmk_version)
+    _build_qmk(config_layout["id"], config_layout["geometry"])
 
 
-def _build_qmk(layout_id: str, geometry: str, firmware_version: str) -> None:
+def _build_qmk(layout_id: str, geometry: str) -> None:
     keyboard_directory = REPO_ROOT / "qmk_firmware/keyboards/zsa"
     keymaps = keyboard_directory / geometry / "keymaps"
     os.chdir(REPO_ROOT / "docker")
     _docker(
         "build",
-        "--build-arg",
-        f"KB_GEOMETRY={geometry}",
-        "--build-arg",
-        f"KB_ID={layout_id}",
-        "--build-arg",
-        f"FIRMWARE_VERSION={firmware_version}",
         "-t",
         "qmk",
         ".",
@@ -162,7 +155,7 @@ def _commit_oryx(hash_id: str, layout_id: str) -> None:
         _get_sources(temp_dir, hash_id, layout_id)
         _git("add", layout_id, temp_dir)
         try:
-            _git("commit", "-m", "latest oryx")
+            _git("commit", "-m", "latest oryx", "--no-verify")
         except subprocess.CalledProcessError:
             rich.print("commit failed. press enter to continue")
         _git("worktree", "remove", temp_dir)
