@@ -135,7 +135,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 enum combos {
-    REISUB_COMBO,
+    REISUB_COMBO = 8,
 };
 
 // `  =  -  left-meta
@@ -209,7 +209,7 @@ bool rgb_matrix_indicators_user(void) {
   if (rawhid_state.rgb_control) {
       return false;
   }
-  if (!keyboard_config.disable_layer_led) { 
+  if (!keyboard_config.disable_layer_led) {
     switch (biton32(layer_state)) {
       case 0:
         set_layer_color(0);
@@ -247,12 +247,12 @@ typedef struct {
 } tap;
 
 enum {
-    SINGLE_TAP = 1,      
-    SINGLE_HOLD,         
-    DOUBLE_TAP,          
-    DOUBLE_HOLD,         
-    DOUBLE_SINGLE_TAP,   
-    MORE_TAPS            
+    SINGLE_TAP = 1,
+    SINGLE_HOLD,
+    DOUBLE_TAP,
+    DOUBLE_HOLD,
+    DOUBLE_SINGLE_TAP,
+    MORE_TAPS
 };
 
 static tap dance_state[3];
@@ -558,8 +558,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           register_code16(LSFT(KC_MS_BTN3));
         } else {
           unregister_code16(LSFT(KC_MS_BTN3));
-        }  
-      }  
+        }
+      }
       return false;
     case DUAL_FUNC_1:
       if (record->tap.count > 0) {
@@ -573,8 +573,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           register_code16(LALT(LGUI(LCTL(LSFT(KC_Q)))));
         } else {
           unregister_code16(LALT(LGUI(LCTL(LSFT(KC_Q)))));
-        }  
-      }  
+        }
+      }
       return false;
     case DUAL_FUNC_2:
       if (record->tap.count > 0) {
@@ -588,8 +588,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           register_code16(LCTL(LSFT(KC_T)));
         } else {
           unregister_code16(LCTL(LSFT(KC_T)));
-        }  
-      }  
+        }
+      }
       return false;
     case DUAL_FUNC_3:
       if (record->tap.count > 0) {
@@ -603,8 +603,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           register_code16(KC_LEFT_ALT);
         } else {
           unregister_code16(KC_LEFT_ALT);
-        }  
-      }  
+        }
+      }
       return false;
     case DUAL_FUNC_4:
       if (record->tap.count > 0) {
@@ -618,8 +618,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           register_code16(LALT(LCTL(LSFT(KC_5))));
         } else {
           unregister_code16(LALT(LCTL(LSFT(KC_5))));
-        }  
-      }  
+        }
+      }
       return false;
     case DUAL_FUNC_5:
       if (record->tap.count > 0) {
@@ -633,8 +633,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           register_code16(LALT(LCTL(LSFT(KC_4))));
         } else {
           unregister_code16(LALT(LCTL(LSFT(KC_4))));
-        }  
-      }  
+        }
+      }
       return false;
     case RGB_SLD:
       if (record->event.pressed) {
@@ -715,4 +715,3 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
             break;
     }
 }
-
