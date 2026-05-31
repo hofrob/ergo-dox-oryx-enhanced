@@ -43,7 +43,6 @@ enum custom_keycodes {
   ST_MACRO_33,
   ST_MACRO_34,
   ST_MACRO_35,
-  ST_MACRO_36,
 };
 
 
@@ -53,12 +52,12 @@ enum tap_dance_codes {
   DANCE_2,
 };
 
-#define DUAL_FUNC_0 LT(15, KC_J)
-#define DUAL_FUNC_1 LT(15, KC_Z)
-#define DUAL_FUNC_2 LT(3, KC_Q)
-#define DUAL_FUNC_3 LT(12, KC_F12)
-#define DUAL_FUNC_4 LT(10, KC_A)
-#define DUAL_FUNC_5 LT(1, KC_J)
+#define DUAL_FUNC_0 LT(12, KC_C)
+#define DUAL_FUNC_1 LT(14, KC_F18)
+#define DUAL_FUNC_2 LT(8, KC_F23)
+#define DUAL_FUNC_3 LT(14, KC_F)
+#define DUAL_FUNC_4 LT(12, KC_6)
+#define DUAL_FUNC_5 LT(12, KC_F4)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_ergodox_pretty(
@@ -107,24 +106,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, LALT(LGUI(LCTL(LSFT(KC_A)))),LALT(LGUI(LCTL(LSFT(KC_S)))),LALT(LGUI(LCTL(LSFT(KC_D)))),LALT(LGUI(LCTL(LSFT(KC_F)))),KC_MS_BTN3,                                                                     KC_TRANSPARENT, KC_KP_4,        KC_KP_5,        KC_KP_6,        KC_KP_PLUS,     KC_TRANSPARENT,
     KC_TRANSPARENT, DUAL_FUNC_3,    KC_TRANSPARENT, KC_DOT,         KC_COMMA,       KC_UNDS,        KC_PSCR,                                        KC_TRANSPARENT, KC_TRANSPARENT, KC_KP_1,        KC_KP_2,        KC_KP_3,        KC_KP_MINUS,    KC_TRANSPARENT,
     LALT(LCTL(LSFT(KC_F10))),KC_TRANSPARENT, KC_TRANSPARENT, KC_HOME,        KC_END,                                                                                                         KC_TRANSPARENT, KC_KP_0,        KC_KP_DOT,      KC_EQUAL,       KC_TRANSPARENT,
-                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_NUM,         ST_MACRO_27,
+                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_NUM,         KC_TRANSPARENT,
                                                                                                                     KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
   ),
   [5] = LAYOUT_ergodox_pretty(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 LALT(LCTL(LSFT(KC_F12))),LALT(LCTL(LSFT(KC_F6))),LALT(LCTL(LSFT(KC_F7))),LALT(LCTL(LSFT(KC_F8))),LALT(LCTL(LSFT(KC_F9))),LALT(LCTL(LSFT(KC_F10))),KC_TRANSPARENT,
-    KC_TRANSPARENT, ST_MACRO_28,    ST_MACRO_29,    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, TD(DANCE_2),                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LALT(LGUI(LCTL(LSFT(KC_D)))),RALT(KC_F),     LALT(LGUI(LCTL(LSFT(KC_G)))),                                                                LALT(LSFT(KC_O)),ST_MACRO_33,    ST_MACRO_34,    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, ST_MACRO_30,    KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_BTN3,     KC_TRANSPARENT, ST_MACRO_31,                                    KC_TRANSPARENT, KC_TRANSPARENT, LCTL(KC_F12),   KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, ST_MACRO_27,    ST_MACRO_28,    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, TD(DANCE_2),                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LALT(LGUI(LCTL(LSFT(KC_D)))),RALT(KC_F),     LALT(LGUI(LCTL(LSFT(KC_G)))),                                                                LALT(LSFT(KC_O)),ST_MACRO_32,    ST_MACRO_33,    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, ST_MACRO_29,    KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_BTN3,     KC_TRANSPARENT, ST_MACRO_30,                                    KC_TRANSPARENT, KC_TRANSPARENT, LCTL(KC_F12),   KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LCTL(KC_PAGE_UP),LCTL(KC_PGDN),                                                                                                  KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LALT(KC_PSCR),
                                                                                                     LALT(LCTL(LSFT(KC_3))),DUAL_FUNC_4,    KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                                                     DUAL_FUNC_5,    KC_TRANSPARENT,
-                                                                                    KC_MS_BTN4,     ST_MACRO_32,    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_BTN5
+                                                                                    KC_MS_BTN4,     ST_MACRO_31,    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_BTN5
   ),
   [6] = LAYOUT_ergodox_pretty(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, ST_MACRO_35,    KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, ST_MACRO_36,    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, ST_MACRO_34,    KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, ST_MACRO_35,    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                                     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
@@ -503,50 +502,45 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
     case ST_MACRO_27:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_DOWN)SS_DELAY(1000)  SS_TAP(X_DOWN)SS_DELAY(1000)  SS_TAP(X_DOWN)SS_DELAY(1000)  SS_TAP(X_DOWN)  SS_DELAY(100) SS_TAP(X_ENTER));
+      SEND_STRING(SS_TAP(X_ESCAPE)SS_DELAY(100)  SS_LSFT(SS_TAP(X_Z))SS_DELAY(100)  SS_LSFT(SS_TAP(X_Q)));
     }
     break;
     case ST_MACRO_28:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESCAPE)SS_DELAY(100)  SS_LSFT(SS_TAP(X_Z))SS_DELAY(100)  SS_LSFT(SS_TAP(X_Q)));
+      SEND_STRING(SS_TAP(X_ESCAPE)SS_DELAY(100)  SS_LSFT(SS_TAP(X_SCLN))SS_DELAY(100)  SS_TAP(X_W)SS_DELAY(100)  SS_TAP(X_ENTER));
     }
     break;
     case ST_MACRO_29:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESCAPE)SS_DELAY(100)  SS_LSFT(SS_TAP(X_SCLN))SS_DELAY(100)  SS_TAP(X_W)SS_DELAY(100)  SS_TAP(X_ENTER));
+      SEND_STRING(SS_TAP(X_ESCAPE)SS_DELAY(100)  SS_LSFT(SS_TAP(X_Z))SS_DELAY(100)  SS_LSFT(SS_TAP(X_Z)));
     }
     break;
     case ST_MACRO_30:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESCAPE)SS_DELAY(100)  SS_LSFT(SS_TAP(X_Z))SS_DELAY(100)  SS_LSFT(SS_TAP(X_Z)));
+      SEND_STRING(SS_LSFT(SS_TAP(X_SCLN))SS_DELAY(10)  SS_TAP(X_S)SS_DELAY(10)  SS_TAP(X_E)SS_DELAY(10)  SS_TAP(X_T)SS_DELAY(10)  SS_TAP(X_SPACE)SS_DELAY(10)  SS_TAP(X_W)SS_DELAY(10)  SS_TAP(X_R)SS_DELAY(10)  SS_TAP(X_A)SS_DELAY(10)  SS_TAP(X_P)SS_DELAY(9)  SS_LSFT(SS_TAP(X_1))SS_DELAY(100)  SS_TAP(X_ENTER));
     }
     break;
     case ST_MACRO_31:
     if (record->event.pressed) {
-      SEND_STRING(SS_LSFT(SS_TAP(X_SCLN))SS_DELAY(10)  SS_TAP(X_S)SS_DELAY(10)  SS_TAP(X_E)SS_DELAY(10)  SS_TAP(X_T)SS_DELAY(10)  SS_TAP(X_SPACE)SS_DELAY(10)  SS_TAP(X_W)SS_DELAY(10)  SS_TAP(X_R)SS_DELAY(10)  SS_TAP(X_A)SS_DELAY(10)  SS_TAP(X_P)SS_DELAY(9)  SS_LSFT(SS_TAP(X_1))SS_DELAY(100)  SS_TAP(X_ENTER));
+      SEND_STRING(SS_LALT(SS_LCTL(SS_LSFT(SS_TAP(X_4))))SS_DELAY(300)  SS_TAP(X_MEDIA_PLAY_PAUSE));
     }
     break;
     case ST_MACRO_32:
     if (record->event.pressed) {
-      SEND_STRING(SS_LALT(SS_LCTL(SS_LSFT(SS_TAP(X_4))))SS_DELAY(300)  SS_TAP(X_MEDIA_PLAY_PAUSE));
+      SEND_STRING(SS_TAP(X_ESCAPE)SS_DELAY(100)  SS_LSFT(SS_TAP(X_Z))SS_DELAY(100)  SS_LSFT(SS_TAP(X_Z)));
     }
     break;
     case ST_MACRO_33:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESCAPE)SS_DELAY(100)  SS_LSFT(SS_TAP(X_Z))SS_DELAY(100)  SS_LSFT(SS_TAP(X_Z)));
+      SEND_STRING(SS_TAP(X_ESCAPE)SS_DELAY(100)  SS_LSFT(SS_TAP(X_Z))SS_DELAY(100)  SS_LSFT(SS_TAP(X_Q)));
     }
     break;
     case ST_MACRO_34:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_ESCAPE)SS_DELAY(100)  SS_LSFT(SS_TAP(X_Z))SS_DELAY(100)  SS_LSFT(SS_TAP(X_Q)));
-    }
-    break;
-    case ST_MACRO_35:
-    if (record->event.pressed) {
       SEND_STRING(SS_LSFT(SS_TAP(X_2))SS_DELAY(100)  SS_LSFT(SS_TAP(X_2)));
     }
     break;
-    case ST_MACRO_36:
+    case ST_MACRO_35:
     if (record->event.pressed) {
       SEND_STRING(SS_LSFT(SS_TAP(X_SCLN))SS_DELAY(100)  SS_LSFT(SS_TAP(X_5))SS_DELAY(100)  SS_TAP(X_S)SS_DELAY(100)  SS_TAP(X_SLASH));
     }
