@@ -138,7 +138,9 @@ enum combos {
 };
 
 // `  =  -  left-meta
-const uint16_t PROGMEM reisub_combo[] = {KC_GRV, KC_EQL, KC_MINS, KC_LGUI, COMBO_END};
+// NOTE: combos match the EXACT keymap keycode. On layer 0 the grave key is a
+// mod-tap (MT(MOD_LSFT | MOD_LALT, KC_GRAVE)), so plain KC_GRV would never match.
+const uint16_t PROGMEM reisub_combo[] = {MT(MOD_LSFT | MOD_LALT, KC_GRAVE), KC_EQUAL, KC_MINUS, KC_LEFT_GUI, COMBO_END};
 
 const uint16_t PROGMEM combo0[] = { MT(MOD_LCTL, KC_Z), LSFT(KC_LEFT_CTRL), COMBO_END};
 const uint16_t PROGMEM combo1[] = { LCTL(KC_LEFT_ALT), MT(MOD_LALT, KC_X), COMBO_END};
@@ -657,12 +659,12 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
                 register_code(KC_PSCR);   // hold SysRq (PrintScreen)
                 wait_ms(100);
 
-                tap_code(KC_R); wait_ms(1000);  // take keyboard out of raw mode
-                tap_code(KC_E); wait_ms(1000);  // SIGTERM to all procs
-                tap_code(KC_I); wait_ms(1000);  // SIGKILL to all procs
-                tap_code(KC_S); wait_ms(1000);  // sync disks
-                tap_code(KC_U); wait_ms(1000);  // remount read-only
-                tap_code(KC_B);                 // reboot
+                tap_code(KC_R); wait_ms(200);  // take keyboard out of raw mode
+                tap_code(KC_E); wait_ms(200);  // SIGTERM to all procs
+                tap_code(KC_I); wait_ms(200);  // SIGKILL to all procs
+                tap_code(KC_S); wait_ms(200);  // sync disks
+                tap_code(KC_U); wait_ms(200);  // remount read-only
+                tap_code(KC_B);                // reboot
 
                 unregister_code(KC_PSCR);
                 unregister_code(KC_LALT);
