@@ -50,11 +50,11 @@ enum tap_dance_codes {
   DANCE_1,
 };
 
-#define DUAL_FUNC_0 LT(14, KC_A)
-#define DUAL_FUNC_1 LT(11, KC_F5)
-#define DUAL_FUNC_2 LT(3, KC_W)
-#define DUAL_FUNC_3 LT(4, KC_F6)
-#define DUAL_FUNC_4 LT(15, KC_I)
+#define DUAL_FUNC_0 LT(8, KC_N)
+#define DUAL_FUNC_1 LT(15, KC_M)
+#define DUAL_FUNC_2 LT(4, KC_Z)
+#define DUAL_FUNC_3 LT(4, KC_F15)
+#define DUAL_FUNC_4 LT(1, KC_4)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_ergodox_pretty(
@@ -112,7 +112,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, ST_MACRO_26,    ST_MACRO_27,    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, TD(DANCE_1),                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LALT(LGUI(LCTL(LSFT(KC_D)))),RALT(KC_F),     LALT(LGUI(LCTL(LSFT(KC_G)))),                                                                LALT(LSFT(KC_O)),ST_MACRO_31,    ST_MACRO_32,    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, ST_MACRO_28,    KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_BTN3,     KC_TRANSPARENT, ST_MACRO_29,                                    KC_TRANSPARENT, KC_TRANSPARENT, LCTL(KC_F12),   KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LCTL(KC_PAGE_UP),LCTL(KC_PGDN),                                                                                                  KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    LALT(LCTL(LSFT(KC_F9))),KC_TRANSPARENT, KC_TRANSPARENT, LCTL(KC_PAGE_UP),LCTL(KC_PGDN),                                                                                                  KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                                     LALT(LCTL(LSFT(KC_3))),DUAL_FUNC_3,    KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                                                     DUAL_FUNC_4,    KC_TRANSPARENT,
                                                                                     KC_MS_BTN4,     ST_MACRO_30,    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_BTN5
