@@ -1,5 +1,4 @@
 FROM python:3.14-slim-trixie
-COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
 RUN apt-get update && apt-get install -y \
     avr-libc \
@@ -9,6 +8,8 @@ RUN apt-get update && apt-get install -y \
     gcc-arm-none-eabi \
     gcc-avr \
     libnewlib-arm-none-eabi
+
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
 RUN uv tool install qmk
 
