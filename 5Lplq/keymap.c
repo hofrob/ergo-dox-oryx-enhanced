@@ -60,11 +60,11 @@ enum tap_dance_codes {
   DANCE_1,
 };
 
-#define DUAL_FUNC_0 LT(7, KC_E)
-#define DUAL_FUNC_1 LT(15, KC_L)
-#define DUAL_FUNC_2 LT(14, KC_J)
-#define DUAL_FUNC_3 LT(8, KC_6)
-#define DUAL_FUNC_4 LT(7, KC_L)
+#define DUAL_FUNC_0 LT(6, KC_6)
+#define DUAL_FUNC_1 LT(13, KC_F5)
+#define DUAL_FUNC_2 LT(5, KC_Z)
+#define DUAL_FUNC_3 LT(5, KC_E)
+#define DUAL_FUNC_4 LT(5, KC_R)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_ergodox_pretty(
@@ -74,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LEFT_SHIFT,  MT(MOD_LCTL, KC_Z),MT(MOD_LALT, KC_X),KC_C,           DUAL_FUNC_0,    KC_B,           KC_ENTER,                                       KC_ENTER,       KC_N,           KC_M,           KC_COMMA,       KC_DOT,         MT(MOD_RCTL, KC_SLASH),KC_RIGHT_SHIFT,
     MT(MOD_LSFT | MOD_LALT, KC_GRAVE),LSFT(KC_LEFT_CTRL),LCTL(KC_LEFT_ALT),KC_LEFT,        KC_RIGHT,                                                                                                       KC_UP,          KC_DOWN,        KC_LPRN,        KC_RPRN,        OSL(6),
                                                                                                     MT(MOD_LALT, KC_APPLICATION),KC_TAB,         KC_RIGHT_ALT,   MT(MOD_LCTL, KC_ESCAPE),
-                                                                                                                    KC_HOME,        MT(MOD_RGUI, KC_PAGE_UP),
+                                                                                                                    KC_HOME,        MT(MOD_LGUI, KC_PAGE_UP),
                                                                                     LT(4, KC_SPACE),KC_BSPC,        LT(5, KC_END),  LT(4, KC_PGDN), KC_TAB,         KC_SPACE
   ),
   [1] = LAYOUT_ergodox_pretty(
