@@ -50,6 +50,8 @@ enum custom_keycodes {
   ST_MACRO_40,
   ST_MACRO_41,
   ST_MACRO_42,
+  ST_MACRO_43,
+  ST_MACRO_44,
 };
 
 
@@ -58,12 +60,12 @@ enum tap_dance_codes {
   DANCE_1,
 };
 
-#define DUAL_FUNC_0 LT(6, KC_Y)
-#define DUAL_FUNC_1 LT(2, KC_U)
-#define DUAL_FUNC_2 LT(3, KC_Z)
-#define DUAL_FUNC_3 LT(8, KC_5)
-#define DUAL_FUNC_4 LT(5, KC_F10)
-#define DUAL_FUNC_5 LT(3, KC_T)
+#define DUAL_FUNC_0 LT(3, KC_7)
+#define DUAL_FUNC_1 LT(9, KC_6)
+#define DUAL_FUNC_2 LT(4, KC_X)
+#define DUAL_FUNC_3 LT(6, KC_O)
+#define DUAL_FUNC_4 LT(9, KC_F12)
+#define DUAL_FUNC_5 LT(5, KC_F19)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_ergodox_pretty(
@@ -131,7 +133,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, ST_MACRO_37,    ST_MACRO_38,    KC_TRANSPARENT, ST_MACRO_39,    KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, ST_MACRO_40,    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, ST_MACRO_41,    ST_MACRO_42,                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, ST_MACRO_41,    ST_MACRO_42,                                                                                                    ST_MACRO_43,    ST_MACRO_44,    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                                     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                                                     KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
@@ -550,6 +552,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case ST_MACRO_42:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_G)SS_DELAY(100)  SS_TAP(X_T));
+    }
+    break;
+    case ST_MACRO_43:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_LBRC)SS_DELAY(100)  SS_TAP(X_H));
+    }
+    break;
+    case ST_MACRO_44:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_RBRC)SS_DELAY(100)  SS_TAP(X_H));
     }
     break;
 
