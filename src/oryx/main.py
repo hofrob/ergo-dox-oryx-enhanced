@@ -96,23 +96,19 @@ def build_qmk() -> None:
 def _build_qmk(layout_id: str, geometry: str) -> None:
     keyboard_directory = REPO_ROOT / "qmk_firmware/keyboards/zsa"
     keymaps = keyboard_directory / geometry / "keymaps"
-    os.chdir(REPO_ROOT / "docker")
-    _docker(
-        "build",
-        "-t",
-        "qmk",
-        ".",
-    )
-    os.chdir(REPO_ROOT)
     subprocess.run(["rm", "-rf", keymaps / layout_id])
     keymaps.mkdir(exist_ok=True)
     subprocess.run(["cp", "-r", str(REPO_ROOT / layout_id), str(keymaps)])
     _docker(
         "run",
-        "-v",
-        "./qmk_firmware:/app",
         "--rm",
-        "qmk",
+        "--user",
+        f"{os.getuid()}:{os.getgid()}",
+        "-v",
+        "./qmk_firmware:/qmk_firmware:z",
+        "-w",
+        "/qmk_firmware",
+        "ghcr.io/qmk/qmk_cli",
         "make",
         f"zsa/{geometry}:{layout_id}",
     )
