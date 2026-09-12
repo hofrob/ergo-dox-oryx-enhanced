@@ -54,6 +54,8 @@ enum custom_keycodes {
   ST_MACRO_44,
   ST_MACRO_45,
   ST_MACRO_46,
+  HOLD_F,
+  HOLD_SHIFT_W,
 };
 
 
@@ -85,7 +87,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_Z,           KC_X,           KC_TRANSPARENT, KC_V,           KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_LEFT_CTRL,   KC_LEFT_ALT,    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+                                                                                                    HOLD_F,         HOLD_SHIFT_W,   KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                                                     KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                     KC_SPACE,       KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
   ),
@@ -337,6 +339,17 @@ tap_dance_action_t tap_dance_actions[] = {
         [DANCE_0] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dance_0_finished, dance_0_reset),
         [DANCE_1] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_1, dance_1_finished, dance_1_reset),
 };
+
+// State for HOLD_F: latched hold of F that auto-releases after 3 seconds.
+static bool f_held = false;
+static uint16_t f_timer = 0;
+
+void housekeeping_task_user(void) {
+  if (f_held && timer_elapsed(f_timer) > 3000) {
+    unregister_code16(KC_F);
+    f_held = false;
+  }
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
@@ -651,6 +664,36 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
       }
       return false;
+    case HOLD_F: {
+      // Toggle-hold F: first press holds F down (auto-releases after 3s),
+      // pressing again releases it early.
+      if (record->event.pressed) {
+        if (f_held) {
+          unregister_code16(KC_F);
+          f_held = false;
+        } else {
+          register_code16(KC_F);
+          f_held = true;
+          f_timer = timer_read();
+        }
+      }
+      return false;
+    }
+    case HOLD_SHIFT_W: {
+      // Toggle-hold Shift+W: first press holds them down, next press releases.
+      static bool sw_held = false;
+      if (record->event.pressed) {
+        if (sw_held) {
+          unregister_code16(KC_W);
+          unregister_code16(KC_LEFT_SHIFT);
+        } else {
+          register_code16(KC_LEFT_SHIFT);
+          register_code16(KC_W);
+        }
+        sw_held = !sw_held;
+      }
+      return false;
+    }
     case RGB_SLD:
       if (record->event.pressed) {
         rgblight_mode(1);
