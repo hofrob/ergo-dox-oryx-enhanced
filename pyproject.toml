@@ -35,6 +35,7 @@ extend-exclude = [
   "qmk_firmware",
   "temp",
 ]
+force-exclude = true
 preview = true
 unsafe-fixes = true
 format.skip-magic-trailing-comma = true
