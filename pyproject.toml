@@ -26,7 +26,7 @@ dev = [
   "prek",
   "pyproject-fmt",
   "ruff",
-  "ty",
+  "ty>=0.0.89",
 ]
 
 [tool.ruff]
@@ -95,3 +95,7 @@ lint.isort.split-on-trailing-comma = false
 lint.pep8-naming.classmethod-decorators = [
   "classmethod",
 ]
+
+[tool.ty]
+src.exclude = [ "qmk_firmware", "temp" ]
+terminal.error-on-warning = true
