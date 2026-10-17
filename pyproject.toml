@@ -23,7 +23,7 @@ scripts.oryx = "oryx.main:run"
 [dependency-groups]
 dev = [
   "mdformat",
-  "pre-commit",
+  "prek",
   "pyproject-fmt",
   "ruff",
   "ty",

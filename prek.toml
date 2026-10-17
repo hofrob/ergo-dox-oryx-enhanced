@@ -1,0 +1,47 @@
+#:schema https://www.schemastore.org/prek.json
+
+default_stages = ["pre-commit"]
+fail_fast = true
+
+[[repos]]
+repo = "builtin"
+hooks = [
+  { id = "detect-private-key" },
+  { id = "check-executables-have-shebangs" },
+  { id = "check-json" },
+  { id = "check-merge-conflict" },
+  { id = "check-shebang-scripts-are-executable" },
+  { id = "check-symlinks" },
+  { id = "check-toml" },
+  { id = "check-vcs-permalinks" },
+  { id = "check-xml" },
+  { id = "check-yaml" },
+  { id = "destroyed-symlinks" },
+  { id = "end-of-file-fixer" },
+  { id = "fix-byte-order-marker" },
+  { id = "mixed-line-ending", args = ["--fix=lf"] },
+  { id = "trailing-whitespace", args = ["--markdown-linebreak-ext=md"] },
+  { id = "check-case-conflict" },
+]
+
+[[repos]]
+repo = "https://github.com/pre-commit/pre-commit-hooks"
+rev = "v6.0.0"
+hooks = [
+  { id = "check-ast" },
+  { id = "debug-statements" },
+  { id = "check-docstring-first" },
+  { id = "name-tests-test", args = ["--pytest-test-first"], exclude = "^tests/utils/" },
+  { id = "sort-simple-yaml" },
+  { id = "check-builtin-literals" },
+]
+
+[[repos]]
+repo = "local"
+hooks = [
+  { id = "ruff-format", name = "ruff-format", entry = "uv run ruff format", language = "system", types_or = ["python", "pyi"] },
+  { id = "ruff", name = "ruff", entry = "uv run ruff check --fix --unsafe-fixes", language = "system", types_or = ["python", "pyi"] },
+  { id = "ty", name = "ty", entry = "uv run ty check", language = "system", types_or = ["python", "pyi"] },
+  { id = "pyproject-fmt", name = "pyproject-fmt", entry = "uv run pyproject-fmt", language = "system", files = '^pyproject\.toml$' },
+  { id = "mdformat", name = "mdformat", entry = "uv run mdformat", language = "system", types = ["markdown"] },
+]
