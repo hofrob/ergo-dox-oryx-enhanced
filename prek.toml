@@ -40,7 +40,7 @@ hooks = [
 repo = "local"
 hooks = [
   { id = "ruff-format", name = "ruff-format", entry = "uv run ruff format", language = "system", types_or = ["python", "pyi"] },
-  { id = "ruff", name = "ruff", entry = "uv run ruff check --fix --unsafe-fixes", language = "system", types_or = ["python", "pyi"] },
+  { id = "ruff", name = "ruff", entry = "uv run ruff check --fix", language = "system", types_or = ["python", "pyi"] },
   { id = "ty", name = "ty", entry = "uv run ty check", language = "system", types_or = ["python", "pyi"] },
   { id = "pyproject-fmt", name = "pyproject-fmt", entry = "uv run pyproject-fmt", language = "system", files = '^pyproject\.toml$' },
   { id = "mdformat", name = "mdformat", entry = "uv run mdformat", language = "system", types = ["markdown"] },

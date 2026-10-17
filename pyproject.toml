@@ -28,3 +28,70 @@ dev = [
   "ruff",
   "ty",
 ]
+
+[tool.ruff]
+line-length = 88
+extend-exclude = [
+  "qmk_firmware",
+  "temp",
+]
+preview = true
+unsafe-fixes = true
+format.skip-magic-trailing-comma = true
+lint.select = [
+  "ALL",
+]
+lint.ignore = [
+  "bad-dunder-method-name",
+  "docstring-missing-exception",
+  "docstring-missing-returns",
+  "incorrect-blank-line-before-class",
+  "magic-value-comparison",
+  "missing-blank-line-after-summary",
+  "missing-copyright-notice",
+  "missing-trailing-comma",
+  "multi-line-summary-second-line",
+  "print",
+  "start-process-with-partial-path",
+  "subprocess-without-shell-equals-true",
+  "suspicious-subprocess-import",
+  "too-many-arguments",
+  "too-many-positional-arguments",
+  "undocumented-magic-method",
+  "undocumented-public-class",
+  "undocumented-public-function",
+  "undocumented-public-init",
+  "undocumented-public-method",
+  "undocumented-public-module",
+  "undocumented-public-nested-class",
+  "undocumented-public-package",
+]
+lint.per-file-ignores."__init__.py" = [
+  "unused-import",
+]
+lint.per-file-ignores."tests/*" = [
+  "ANN",
+  "assert",
+  "implicit-namespace-package",
+  "import-private-name",
+  "private-member-access",
+]
+lint.unfixable = [
+  "commented-out-code",
+  "p-print",
+  "print",
+  "unused-variable",
+]
+lint.allowed-confusables = [ "×" ]
+lint.flake8-import-conventions.aliases.sqlalchemy = "sa"
+lint.flake8-type-checking.runtime-evaluated-base-classes = [
+  "pydantic.BaseModel",
+  "pydantic_settings.BaseSettings",
+]
+lint.flake8-type-checking.runtime-evaluated-decorators = [ "cyclopts.App.command" ]
+lint.isort.combine-as-imports = true
+lint.isort.force-sort-within-sections = true
+lint.isort.split-on-trailing-comma = false
+lint.pep8-naming.classmethod-decorators = [
+  "classmethod",
+]

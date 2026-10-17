@@ -1,17 +1,16 @@
-import tempfile
 import contextlib
-import subprocess
-import shutil
-import zipfile
 import fnmatch
-import rich
-import pathlib
-
 import os
+import pathlib
+import shutil
+import subprocess
+import tempfile
+import zipfile
 
-import requests
-import yaml
 import cyclopts
+import requests
+import rich
+import yaml
 
 REPO_ROOT = pathlib.Path(__file__).parent.parent.parent
 QMK_FIRMWARE = REPO_ROOT / "qmk_firmware"
@@ -45,7 +44,7 @@ def main() -> None:
     )
     response.raise_for_status()
 
-    hash_id, qmk_version, title = _layout_details()
+    hash_id, qmk_version, _title = _layout_details()
 
     os.chdir(REPO_ROOT)
     _commit_oryx(hash_id, config_layout["id"])
@@ -96,9 +95,9 @@ def build_qmk() -> None:
 def _build_qmk(layout_id: str, geometry: str) -> None:
     keyboard_directory = REPO_ROOT / "qmk_firmware/keyboards/zsa"
     keymaps = keyboard_directory / geometry / "keymaps"
-    subprocess.run(["rm", "-rf", keymaps / layout_id])
+    shutil.rmtree(keymaps / layout_id, ignore_errors=True)
     keymaps.mkdir(exist_ok=True)
-    subprocess.run(["cp", "-r", str(REPO_ROOT / layout_id), str(keymaps)])
+    shutil.copytree(REPO_ROOT / layout_id, keymaps / layout_id)
     _docker(
         "run",
         "--rm",
@@ -114,11 +113,11 @@ def _build_qmk(layout_id: str, geometry: str) -> None:
     )
 
 
-def _git(*args) -> None:
+def _git(*args: str) -> None:
     subprocess.run(["git", *args], check=True)
 
 
-def _docker(*args) -> None:
+def _docker(*args: str) -> None:
     subprocess.run(["docker", *args], check=True)
 
 
@@ -134,19 +133,12 @@ def _pending_changes(layout_id: str) -> bool:
 
 def _commit_oryx(hash_id: str, layout_id: str) -> None:
     if _pending_changes(layout_id):
-        raise Exception("pending changes in the layout. commit first")
+        msg = "pending changes in the layout. commit first"
+        raise RuntimeError(msg)
     with tempfile.TemporaryDirectory() as temp_dir:
         rich.print(f"oryx worktree checked out in {temp_dir}")
-        _git(
-            "worktree",
-            "prune",
-        )
-        _git(
-            "worktree",
-            "add",
-            temp_dir,
-            "oryx",
-        )
+        _git("worktree", "prune")
+        _git("worktree", "add", temp_dir, "oryx")
         os.chdir(temp_dir)
         _get_sources(temp_dir, hash_id, layout_id)
         _git("add", layout_id, temp_dir)
@@ -208,9 +200,7 @@ def _config_layout() -> dict:
 @app.command
 def config() -> dict:
     with WORKFLOW_YAML.open("r") as workflow_yaml:
-        workflow = yaml.safe_load(workflow_yaml)
-
-    return workflow
+        return yaml.safe_load(workflow_yaml)
 
 
 def run() -> None:
