@@ -1,7 +1,7 @@
 #:schema https://www.schemastore.org/prek.json
 
-default_stages = ["pre-commit"]
 fail_fast = true
+default_language_version = { python = "3.14" }
 
 [[repos]]
 repo = "builtin"
