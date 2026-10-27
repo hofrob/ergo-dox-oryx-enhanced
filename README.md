@@ -269,7 +269,7 @@ ______________________________________________________________________
 
 ```bash
 uv run oryx        # fetch latest Oryx revision, rebuild in Docker, flash
-uv run build-qmk   # build only
+uv run oryx build-qmk  # build only
 ```
 
 See [`src/oryx/main.py`](src/oryx/main.py) for the full pipeline.

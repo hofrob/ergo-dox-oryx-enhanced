@@ -28,6 +28,7 @@ query getLayout($hashId: String!, $revisionId: String!, $geometry: String) {
 app = cyclopts.App()
 
 
+@app.default
 @app.command
 def main() -> None:
     config_layout = _config_layout()
